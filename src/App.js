@@ -48,14 +48,15 @@ const App = () => {
 
   return (
     <div className="App">
-      <input value={valueN} onChange={(e) => setValue(e.target.value)} />
-      <button onClick={() => setArray()}>Go</button>
+      <input data-testid={"number-input"} value={valueN} onChange={(e) => setValue(e.target.value)} />
+      <button data-testid={"go-button"} onClick={() => setArray()}>Go</button>
       {newResult && (
-        <div>
-          {newResult.map((item) => {
+        <div data-testid="results">
+          {newResult.map((item,index) => {
             return (
               <span
-                key={item}
+                key={"item-"+(index+1)}
+                data-testid={"item-"+(index+1)}
                 style={{
                   display: "block",
                   color: Number(item) ? "black" : "blue"
